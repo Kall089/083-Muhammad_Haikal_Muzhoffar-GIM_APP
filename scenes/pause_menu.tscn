@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" uid="uid://c6t32ip28wjvv" path="res://script/pause_menu.gd" id="1_pause"]
+[ext_resource type="Texture2D" uid="uid://cny1tlc134ov0" path="res://Images/panel.png" id="2_panel"]
+[ext_resource type="Texture2D" uid="uid://b0phmsq782llt" path="res://Images/button_normal.png" id="3_normal"]
+[ext_resource type="Texture2D" uid="uid://dtslw71kew0m8" path="res://Images/button_pressed.png" id="4_pressed"]
+[ext_resource type="Texture2D" uid="uid://dlrk8e56f6fc5" path="res://Images/button_hover.png" id="5_hover"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_right = 40.0
+content_margin_bottom = 40.0
+texture = ExtResource("2_panel")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
+
+[sub_resource type="FontVariation" id="FontVariation_button"]
+variation_embolden = 1.36
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_pause")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ResumeButton" type="TextureButton" parent="CenterContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+texture_normal = ExtResource("3_normal")
+texture_pressed = ExtResource("4_pressed")
+texture_hover = ExtResource("5_hover")
+
+[node name="ResumeLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/ResumeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_button")
+theme_override_font_sizes/font_size = 24
+text = "RESUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" type="TextureButton" parent="CenterContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+texture_normal = ExtResource("3_normal")
+texture_pressed = ExtResource("4_pressed")
+texture_hover = ExtResource("5_hover")
+
+[node name="MenuLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_button")
+theme_override_font_sizes/font_size = 24
+text = "MENU"
+horizontal_alignment = 1
+vertical_alignment = 1

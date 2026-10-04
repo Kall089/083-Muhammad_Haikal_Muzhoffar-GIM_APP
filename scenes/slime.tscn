@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://blodvotp03icg"]
+
+[ext_resource type="Texture2D" uid="uid://t65i6gjfff5v" path="res://Images/pixel_platformer_assets/slime_sheet.png" id="1_slime"]
+[ext_resource type="Script" uid="uid://twox5leuvg66" path="res://script/slime.gd" id="2_script"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slime_1"]
+atlas = ExtResource("1_slime")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slime_2"]
+atlas = ExtResource("1_slime")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_slime"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slime_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slime_2")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(12, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(18, 14)
+
+[node name="Slime" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("2_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_slime")
+animation = &"move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="FloorCheck" type="RayCast2D" parent="."]
+position = Vector2(-8, 0)
+target_position = Vector2(0, 10)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_hitbox")

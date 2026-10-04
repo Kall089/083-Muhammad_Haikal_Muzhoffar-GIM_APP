@@ -1,0 +1,151 @@
+[gd_scene load_steps=11 format=3 uid="uid://pou8nbxregff"]
+
+[ext_resource type="Script" uid="uid://d0i7mayswf8yq" path="res://script/main_menu.gd" id="1_qe12f"]
+[ext_resource type="Texture2D" uid="uid://cbq6y1x0yhwf" path="res://Images/menu_background.png" id="2_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://dx0kffhdb3hmo" path="res://Images/title_banner.png" id="3_dy7ct"]
+[ext_resource type="Texture2D" uid="uid://cny1tlc134ov0" path="res://Images/panel.png" id="4_0o4t1"]
+[ext_resource type="Texture2D" uid="uid://b0phmsq782llt" path="res://Images/button_normal.png" id="5_0k4wn"]
+[ext_resource type="Texture2D" uid="uid://dtslw71kew0m8" path="res://Images/button_pressed.png" id="6_j5v2v"]
+[ext_resource type="Texture2D" uid="uid://dlrk8e56f6fc5" path="res://Images/button_hover.png" id="7_iotk1"]
+
+[sub_resource type="FontVariation" id="FontVariation_w44g7"]
+variation_embolden = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cm266"]
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_right = 40.0
+content_margin_bottom = 40.0
+texture = ExtResource("4_0o4t1")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
+
+[sub_resource type="FontVariation" id="FontVariation_g8g3n"]
+variation_embolden = 1.36
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qe12f")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8qtwp")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TitleBanner" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 100)
+layout_mode = 2
+texture = ExtResource("3_dy7ct")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TitleBanner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_w44g7")
+theme_override_font_sizes/font_size = 35
+text = "MY GIM GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cm266")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PlayButton" type="TextureButton" parent="CenterContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_0k4wn")
+texture_pressed = ExtResource("6_j5v2v")
+texture_hover = ExtResource("7_iotk1")
+
+[node name="Play" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_g8g3n")
+theme_override_font_sizes/font_size = 30
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditButton" type="TextureButton" parent="CenterContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_0k4wn")
+texture_pressed = ExtResource("6_j5v2v")
+texture_hover = ExtResource("7_iotk1")
+
+[node name="Credit" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer/VBoxContainer/CreditButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_g8g3n")
+theme_override_font_sizes/font_size = 30
+text = "CREDIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="CenterContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_0k4wn")
+texture_pressed = ExtResource("6_j5v2v")
+texture_hover = ExtResource("7_iotk1")
+
+[node name="EXIT" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer/VBoxContainer/QuitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_g8g3n")
+theme_override_font_sizes/font_size = 30
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsDialog" type="AcceptDialog" parent="."]
+title = "CREDIT"
+dialog_text = "Nama: Muhammad Haikal Muzhoffar
+Nick: Kall
+Aviators ID: 083"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/PanelContainer/VBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

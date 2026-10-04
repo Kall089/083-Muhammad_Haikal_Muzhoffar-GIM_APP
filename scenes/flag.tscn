@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb4vv5jjtbu7y"]
+
+[ext_resource type="Script" uid="uid://chqrv5ymvjs2p" path="res://script/flag.gd" id="1_l1sgl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flag"]
+size = Vector2(16, 48)
+
+[node name="Flag" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_l1sgl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_flag")
+
+[node name="WinDialog" type="AcceptDialog" parent="."]
+title = "You Won!"
+dialog_text = "Congrats, you won the game!\nNext level soon."
